@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.entity.Role;
 import com.example.demo.entity.Utilisateurs;
 import com.example.demo.service.ICrudService;
 
@@ -18,7 +21,7 @@ import com.example.demo.service.ICrudService;
 @RestController
 @RequestMapping("/crud_user")
 public class CrudUserController {
-	
+
 	@Autowired
 	private ICrudService userService;
 	
@@ -27,8 +30,16 @@ public class CrudUserController {
 		return userService.getAll();
 	}
 	
+	@GetMapping
+	@RequestMapping("/role_user")
+	public List<Role> getRoles(){
+		return userService.getALLRole();
+	}
+	
 	@PostMapping
 	public Utilisateurs addUtilisateur(@RequestBody Utilisateurs utilisateur) {
+		utilisateur.setEnable(true);
+		System.out.println(utilisateur);
 		return userService.addUtilisateur(utilisateur);
 	}
 	
@@ -41,5 +52,6 @@ public class CrudUserController {
 	public void deleteUtilisateurs(@PathVariable Long id) {
 		userService.deleteUtilisateur(id);
 	}
+	
 	
 }

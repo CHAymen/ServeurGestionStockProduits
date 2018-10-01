@@ -6,13 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.entity.Role;
 import com.example.demo.entity.Utilisateurs;
+import com.example.demo.repository.RoleRepository;
 import com.example.demo.repository.UserRepository;
 @Service
 @Primary
 public class CrudServiceImpl implements ICrudService {
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private RoleRepository roleRepository;
 	@Override
 	public List<Utilisateurs> getAll() {
 		
@@ -35,6 +39,12 @@ public class CrudServiceImpl implements ICrudService {
 	public void deleteUtilisateur(Long id) {
 		userRepository.deleteById(id);
 		
+	}
+
+	@Override
+	public List<Role> getALLRole() {
+		
+		return roleRepository.findAll();
 	}
 
 }

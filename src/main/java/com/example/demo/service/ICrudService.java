@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import java.util.List;
 
+import com.example.demo.entity.Role;
 import com.example.demo.entity.Utilisateurs;
 
 
@@ -11,4 +12,5 @@ public interface ICrudService {
 	Utilisateurs addUtilisateur(Utilisateurs utilisateur);
 	Utilisateurs updateUtilisateurs(Utilisateurs utilisateur);
 	void deleteUtilisateur(Long id);
+	List<Role> getALLRole();
 }
