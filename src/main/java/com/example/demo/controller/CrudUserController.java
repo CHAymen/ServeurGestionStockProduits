@@ -39,7 +39,7 @@ public class CrudUserController {
 	@PostMapping
 	public Utilisateurs addUtilisateur(@RequestBody Utilisateurs utilisateur) {
 		utilisateur.setEnable(true);
-		System.out.println(utilisateur);
+		
 		return userService.addUtilisateur(utilisateur);
 	}
 	
